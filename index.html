@@ -1,55 +1,60 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="mn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Бидний болзоо 💗</title>
 
 <style>
 body {
-    margin: 0;
+    margin:0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(#ffd6e7, #fff);
-    text-align: center;
-    color: #444;
+    background: linear-gradient(#ffd6e8,#fff);
+    text-align:center;
+    color:#444;
 }
 
 .container {
-    padding: 40px 20px;
+    padding:30px 20px;
 }
 
 h1 {
-    color: #ff4f8b;
-    font-size: 35px;
+    color:#ff4f8b;
 }
 
-p {
-    font-size: 18px;
-    line-height: 1.6;
+.card {
+    background:white;
+    max-width:400px;
+    margin:20px auto;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 5px 15px #ddd;
 }
 
-.box {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    margin: 20px auto;
-    max-width: 400px;
-    box-shadow: 0 5px 15px #ddd;
+input, select {
+    width:90%;
+    padding:12px;
+    margin:10px;
+    border-radius:15px;
+    border:1px solid #ddd;
+    font-size:16px;
 }
 
 button {
-    background: #ff4f8b;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 30px;
-    font-size: 18px;
+    background:#ff4f8b;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:30px;
+    font-size:17px;
 }
 
-button:hover {
-    background: #ff2f70;
+#invite {
+    display:none;
 }
 </style>
+
 </head>
 
 <body>
@@ -58,34 +63,80 @@ button:hover {
 
 <h1>💗 Бидний болзоо 💗</h1>
 
-<div class="box">
-<p>
-Чамтай өнгөрүүлсэн мөч бүр<br>
-миний хувьд хамгийн гоё дурсамж байдаг ❤️
-</p>
-</div>
+<div class="card">
 
-<div class="box">
-<h2>✨ Бидний тухай ✨</h2>
-<p>
-Энд бидний түүх, зураг, дурсамжаа нэмэх болно.
-</p>
-</div>
+<h2>Урилгаа үүсгээрэй 🌸</h2>
 
-<div class="box">
-<h2>💕 Хайрын зурвас</h2>
-<p>
-Чи миний хувьд онцгой хүн.
-Үргэлж инээмсэглэж байгаарай 🫶
-</p>
-</div>
+<input id="name" placeholder="Хэний нэр вэ? ❤️">
 
-<button>
-I Love You ❤️
+<br>
+
+<label>📅 Өдөр сонгох</label>
+<input type="date" id="date">
+
+<br>
+
+<label>⏰ Цаг сонгох</label>
+<input type="time" id="time">
+
+<br>
+
+<label>💐 Юу хийх вэ?</label>
+
+<select id="activity">
+<option>☕ Кофе уух</option>
+<option>🍽 Оройн хоол идэх</option>
+<option>🎬 Кино үзэх</option>
+<option>🌸 Салхилах</option>
+<option>🎁 Бэлэг өгөх</option>
+</select>
+
+<br><br>
+
+<button onclick="makeInvite()">
+💌 Урилга үүсгэх
 </button>
 
 </div>
 
+
+<div class="card" id="invite">
+
+<h2>💌 Бидний болзоо</h2>
+
+<p id="result"></p>
+
+<p>
+Чамтай хамт өнгөрүүлэх мөч бүр онцгой 💗
+</p>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+function makeInvite(){
+
+let name=document.getElementById("name").value;
+let date=document.getElementById("date").value;
+let time=document.getElementById("time").value;
+let activity=document.getElementById("activity").value;
+
+
+document.getElementById("invite").style.display="block";
+
+document.getElementById("result").innerHTML =
+"❤️ "+name+" ❤️<br><br>"+
+"📅 Өдөр: "+date+"<br>"+
+"⏰ Цаг: "+time+"<br>"+
+"🌸 Хийх зүйл: "+activity;
+
+}
+
+</script>
 
 
 </body>
