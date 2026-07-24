@@ -1,93 +1,171 @@
 <!DOCTYPE html>
 <html lang="mn">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Бидний болзоо 💗</title>
+<title>Nomin & Batnyam 💗</title>
 
 <style>
 
-body {
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:linear-gradient(#ffd6e8,#fff);
-    text-align:center;
-    overflow:hidden;
-    color:#444;
-}
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
 
-.page {
-    display:none;
-    padding:80px 20px;
-}
 
-.active {
-    display:block;
-}
-
-h1 {
-    color:#ff4f8b;
-    font-size:35px;
-}
-
-.card {
-    background:white;
-    padding:25px;
-    border-radius:25px;
-    max-width:400px;
-    margin:auto;
-    box-shadow:0 5px 20px #ddd;
-}
-
-button {
-    border:none;
-    border-radius:30px;
-    padding:15px 30px;
-    font-size:17px;
-    margin:10px;
-    cursor:pointer;
-}
-
-.yes {
-    background:#ff4f8b;
-    color:white;
-}
-
-.no {
-    background:#ddd;
-    position:absolute;
-}
-
-input, select {
-    width:85%;
-    padding:12px;
-    border-radius:15px;
-    border:1px solid #ddd;
-    font-size:16px;
+*{
+box-sizing:border-box;
 }
 
 
-.heart {
+body{
 
-    position:fixed;
-    bottom:-20px;
-    font-size:30px;
-    animation:fly 3s linear forwards;
+margin:0;
+min-height:100vh;
+background:linear-gradient(135deg,#ffd1e6,#fff5fa);
+font-family:'Quicksand',sans-serif;
+overflow:hidden;
+text-align:center;
 
 }
 
 
-@keyframes fly {
+.page{
 
-0% {
-    transform:translateY(0) rotate(0);
-    opacity:1;
+display:none;
+min-height:100vh;
+padding:40px 20px;
+justify-content:center;
+align-items:center;
+
 }
 
-100% {
-    transform:translateY(-100vh) rotate(360deg);
-    opacity:0;
+
+.active{
+
+display:flex;
+
+}
+
+
+.box{
+
+background:rgba(255,255,255,0.9);
+width:90%;
+max-width:430px;
+padding:35px 25px;
+border-radius:35px;
+box-shadow:0 10px 30px #f5a6c8;
+
+}
+
+
+h1{
+
+font-family:'Pacifico',cursive;
+color:#ff4f91;
+font-size:40px;
+
+}
+
+
+h2{
+
+color:#ff5c9d;
+
+}
+
+
+p{
+
+font-size:18px;
+
+}
+
+
+button{
+
+border:none;
+border-radius:30px;
+padding:15px 30px;
+font-size:17px;
+margin:10px;
+cursor:pointer;
+
+}
+
+
+.main{
+
+background:#ff5c9d;
+color:white;
+
+}
+
+
+.no{
+
+background:#ddd;
+position:absolute;
+
+}
+
+
+input,select{
+
+width:90%;
+padding:13px;
+border-radius:20px;
+border:1px solid #ffb6d5;
+font-size:16px;
+
+}
+
+
+
+.heart{
+
+position:fixed;
+bottom:-20px;
+font-size:30px;
+animation:heart 4s linear forwards;
+
+}
+
+
+@keyframes heart{
+
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+
+100%{
+
+transform:translateY(-110vh) rotate(360deg);
+opacity:0;
+
+}
+
+}
+
+
+.flower{
+
+position:fixed;
+top:-20px;
+font-size:25px;
+animation:flower 5s linear forwards;
+
+}
+
+
+@keyframes flower{
+
+100%{
+
+transform:translateY(110vh) rotate(360deg);
+
 }
 
 }
@@ -101,47 +179,44 @@ input, select {
 <body>
 
 
-<!-- 1-р хуудас -->
-
 <div id="page1" class="page active">
 
-<div class="card">
+<div class="box">
 
-<h1>
-Надтай болзох уу? 💗
-</h1>
+<h1>Nomin & Batnyam 💗</h1>
+
+<h2>Надтай болзох уу? 🌸</h2>
 
 
-<button class="yes" onclick="yesClick()">
+<button class="main" onclick="yesClick()">
 Тийм 💕
 </button>
 
 
-<button class="no" id="no" onmouseover="moveNo()">
+<button class="no" id="no">
 Үгүй 😢
 </button>
 
 
 </div>
 
-</div>
-
-
-
-
-<!-- 2-р хуудас -->
+</div><!-- Хуудас 2 -->
 
 <div id="page2" class="page">
 
-<div class="card">
+<div class="box">
 
-<h1>
-💗 Хүсэлтийг зөвшөөрсөнд баярлалаа 💗
-</h1>
+<h1>💗 Баярлалаа 💗</h1>
+
+<p>
+Хүсэлтийг зөвшөөрсөнд баярлалаа 🫶
+</p>
 
 
-<button onclick="goDate()">
+<button class="main" onclick="openDate()">
+
 За зүгээр дээ, хайртай юм чинь 💗
+
 </button>
 
 
@@ -152,15 +227,14 @@ input, select {
 
 
 
-
-<!-- 3-р хуудас -->
+<!-- Хуудас 3 -->
 
 <div id="page3" class="page">
 
-<div class="card">
+<div class="box">
 
 <h1>
-Болзоогоо сонгоё 🌸
+Бидний болзоо 🌸
 </h1>
 
 
@@ -174,8 +248,7 @@ input, select {
 <input type="time" id="time">
 
 
-
-<p>🌸 Юу хийх вэ?</p>
+<p>💕 Юу хийх вэ?</p>
 
 <select id="activity">
 
@@ -191,12 +264,13 @@ input, select {
 </select>
 
 
-
 <br>
 
 
-<button class="yes" onclick="confirmDate()">
+<button class="main" onclick="confirmDate()">
+
 💌 Болзоогоо баталгаажуулах
+
 </button>
 
 
@@ -208,188 +282,309 @@ input, select {
 
 
 
-<!-- 4-р хуудас -->
+<!-- Хуудас 4 -->
 
 <div id="page4" class="page">
 
-<div class="card">
+<div class="box">
 
 
 <h1>
-💌 Болзоо баталгаажлаа 💗
+💌 Болзоо баталгаажлаа
 </h1>
 
 
-<p id="result"></p>
+<p id="invite"></p>
 
 
 <h2 id="count"></h2>
 
 
-<button onclick="saveInvite()">
+
+<button class="main" onclick="saveInvite()">
+
 💾 Урилгаа хадгалах
+
 </button>
 
 
+
 <button onclick="restart()">
+
 🔄 Эхнээс нь үзэх
+
 </button>
 
 
 </div>
 
-</div><script>
+</div>
+
+
+
+
+<!-- Хөгжим -->
+
+<button id="musicBtn" onclick="playMusic()">
+
+🎵 Хөгжим асаах
+
+</button><script>
+
+
+let music =
+"https://www.youtube.com/embed/cuuwq7I5Vj0?autoplay=1";
+
+
+
+document.getElementById("no").onmouseover=function(){
+
+this.style.left=Math.random()*80+"vw";
+this.style.top=Math.random()*80+"vh";
+
+}
+
+
+
+
 
 function yesClick(){
 
-    for(let i=0;i<80;i++){
 
-        let heart=document.createElement("div");
-
-        heart.className="heart";
-        heart.innerHTML="❤️";
-
-        heart.style.left=Math.random()*100+"vw";
-
-        heart.style.animationDuration=
-        (Math.random()*2+2)+"s";
-
-        document.body.appendChild(heart);
+for(let i=0;i<100;i++){
 
 
-        setTimeout(()=>{
-            heart.remove();
-        },3000);
+let h=document.createElement("div");
 
-    }
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=
+(Math.random()*2+2)+"s";
 
 
-    setTimeout(()=>{
+document.body.appendChild(h);
 
-        changePage("page1","page2");
 
-    },1500);
+setTimeout(()=>{
+
+h.remove();
+
+},4000);
+
 
 }
 
 
 
-function moveNo(){
+for(let i=0;i<30;i++){
 
-    let no=document.getElementById("no");
 
-    no.style.left=Math.random()*80+"vw";
+let f=document.createElement("div");
 
-    no.style.top=Math.random()*80+"vh";
+f.className="flower";
+
+f.innerHTML="🌸";
+
+f.style.left=Math.random()*100+"vw";
+
+
+document.body.appendChild(f);
+
+
+setTimeout(()=>{
+
+f.remove();
+
+},5000);
+
+
+}
+
+
+
+setTimeout(()=>{
+
+changePage("page1","page2");
+
+},1500);
+
 
 }
 
 
 
 
-function goDate(){
 
-    changePage("page2","page3");
+function openDate(){
+
+changePage("page2","page3");
 
 }
+
+
 
 
 
 
 function confirmDate(){
 
-    let date=document.getElementById("date").value;
 
-    let time=document.getElementById("time").value;
-
-    let activity=document.getElementById("activity").value;
+let date=
+document.getElementById("date").value;
 
 
-    localStorage.setItem("date",date);
-
-    localStorage.setItem("time",time);
-
-    localStorage.setItem("activity",activity);
+let time=
+document.getElementById("time").value;
 
 
-
-    document.getElementById("result").innerHTML=
-
-    "📅 Өдөр: "+date+
-    "<br>⏰ Цаг: "+time+
-    "<br>🌸 Юу хийх: "+activity;
+let activity=
+document.getElementById("activity").value;
 
 
 
-    changePage("page3","page4");
+let data={
+
+date:date,
+
+time:time,
+
+activity:activity
+
+};
 
 
-    countDays(date);
+
+localStorage.setItem(
+"dateInvite",
+JSON.stringify(data)
+);
+
+
+
+showInvite(data);
+
+
+
+changePage("page3","page4");
+
 
 }
 
 
 
 
-function countDays(date){
 
-    let today=new Date();
-
-    let target=new Date(date);
+function showInvite(data){
 
 
-    let difference=target-today;
+document.getElementById("invite").innerHTML=
+
+"💗 Nomin & Batnyam 💗<br><br>"+
+"📅 "+data.date+
+"<br>⏰ "+data.time+
+"<br>🌸 "+data.activity;
 
 
-    let days=Math.ceil(
-    difference/(1000*60*60*24)
-    );
+
+let today=new Date();
+
+let target=new Date(data.date);
 
 
-    if(days<0){
-        days=0;
-    }
+let diff=
+Math.ceil(
+(target-today)/(1000*60*60*24)
+);
 
 
-    document.getElementById("count").innerHTML=
 
-    "⏳ Болзоонд "+days+" хоног үлдлээ 💗";
+if(diff<0){
+
+diff=0;
 
 }
+
+
+
+document.getElementById("count").innerHTML=
+
+"⏳ Болзоонд "+diff+" хоног үлдлээ 💗";
+
+
+}
+
 
 
 
 
 function saveInvite(){
 
-    alert(
-    "💾 Таны болзооны урилга хадгалагдлаа 💗"
-    );
+
+alert(
+"💾 Урилга хадгалагдлаа 💗"
+);
+
 
 }
+
+
+
+
+
+function playMusic(){
+
+
+let frame=document.createElement("iframe");
+
+
+frame.src=music;
+
+frame.allow="autoplay";
+
+
+frame.style.display="none";
+
+
+document.body.appendChild(frame);
+
+
+
+alert("🎵 Хөгжим аслаа 💗");
+
+
+}
+
 
 
 
 
 function restart(){
 
-    location.reload();
+location.reload();
 
 }
 
 
 
 
-function changePage(oldPage,newPage){
 
-    document.getElementById(oldPage)
-    .classList.remove("active");
+function changePage(a,b){
 
 
-    document.getElementById(newPage)
-    .classList.add("active");
+document.getElementById(a)
+.classList.remove("active");
+
+
+document.getElementById(b)
+.classList.add("active");
+
 
 }
+
 
 
 </script>
