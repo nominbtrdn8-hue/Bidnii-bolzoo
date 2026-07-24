@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Болзооны урилга</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+width:320px;
+}
+h1{color:#ff4f8b;}
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+margin:10px;
+}
+#yes{
+background:#ff4f8b;
+color:white;
+}
+#no{
+background:#ddd;
+position:relative;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h1>💖 Надтай болзоонд явах уу?</h1>
+<p>Чиний хариултыг маш их хүлээж байна. 🥹</p>
+
+<button id="yes">Тийм 💕</button>
+<button id="no">Үгүй 🙈</button>
+</div>
+
+<script>
+const no=document.getElementById("no");
+const yes=document.getElementById("yes");
+
+no.addEventListener("mouseover",()=>{
+no.style.position="absolute";
+no.style.left=Math.random()*80+"vw";
+no.style.top=Math.random()*80+"vh";
+});
+
+yes.onclick=()=>{
+document.body.innerHTML="<h1 style='font-family:Arial;text-align:center;color:#ff4f8b'>🥰 Баярлалаа! Болзоонд явцгаая! 💖</h1>";
+}
+</script>
+
+</body>
+</html>
