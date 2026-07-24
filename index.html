@@ -10,16 +10,16 @@
 
 body {
     margin:0;
-    height:100vh;
+    font-family: Arial, sans-serif;
     background:linear-gradient(#ffd6e8,#fff);
-    font-family:Arial,sans-serif;
     text-align:center;
     overflow:hidden;
+    color:#444;
 }
 
 .page {
     display:none;
-    padding-top:100px;
+    padding:80px 20px;
 }
 
 .active {
@@ -31,32 +31,54 @@ h1 {
     font-size:35px;
 }
 
-button {
-    padding:15px 35px;
-    border:none;
-    border-radius:30px;
-    font-size:20px;
-    margin:20px;
+.card {
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    max-width:400px;
+    margin:auto;
+    box-shadow:0 5px 20px #ddd;
 }
 
-#yes {
+button {
+    border:none;
+    border-radius:30px;
+    padding:15px 30px;
+    font-size:17px;
+    margin:10px;
+    cursor:pointer;
+}
+
+.yes {
     background:#ff4f8b;
     color:white;
 }
 
-#no {
+.no {
     background:#ddd;
     position:absolute;
 }
 
-.heart {
-    position:absolute;
-    bottom:-20px;
-    font-size:30px;
-    animation:heart 3s linear forwards;
+input, select {
+    width:85%;
+    padding:12px;
+    border-radius:15px;
+    border:1px solid #ddd;
+    font-size:16px;
 }
 
-@keyframes heart {
+
+.heart {
+
+    position:fixed;
+    bottom:-20px;
+    font-size:30px;
+    animation:fly 3s linear forwards;
+
+}
+
+
+@keyframes fly {
 
 0% {
     transform:translateY(0) rotate(0);
@@ -70,6 +92,7 @@ button {
 
 }
 
+
 </style>
 
 </head>
@@ -78,96 +101,293 @@ button {
 <body>
 
 
+<!-- 1-р хуудас -->
+
 <div id="page1" class="page active">
+
+<div class="card">
 
 <h1>
 Надтай болзох уу? 💗
 </h1>
 
-<button id="yes" onclick="yesClick()">
+
+<button class="yes" onclick="yesClick()">
 Тийм 💕
 </button>
 
 
-<button id="no" onmouseover="moveNo()">
+<button class="no" id="no" onmouseover="moveNo()">
 Үгүй 😢
 </button>
 
 
 </div>
 
+</div>
 
+
+
+
+<!-- 2-р хуудас -->
 
 <div id="page2" class="page">
+
+<div class="card">
 
 <h1>
 💗 Хүсэлтийг зөвшөөрсөнд баярлалаа 💗
 </h1>
 
-<button onclick="nextPage()">
+
+<button onclick="goDate()">
 За зүгээр дээ, хайртай юм чинь 💗
 </button>
 
 
 </div>
 
+</div>
 
 
-<script>
+
+
+
+<!-- 3-р хуудас -->
+
+<div id="page3" class="page">
+
+<div class="card">
+
+<h1>
+Болзоогоо сонгоё 🌸
+</h1>
+
+
+<p>📅 Өдөр</p>
+
+<input type="date" id="date">
+
+
+<p>⏰ Цаг</p>
+
+<input type="time" id="time">
+
+
+
+<p>🌸 Юу хийх вэ?</p>
+
+<select id="activity">
+
+<option>🏞 Ханган явах</option>
+
+<option>🍽 Хамт хоол идэх</option>
+
+<option>🦁 Амьтны хүрээлэн үзэх</option>
+
+<option>🌿 Намсан явах</option>
+
+
+</select>
+
+
+
+<br>
+
+
+<button class="yes" onclick="confirmDate()">
+💌 Болзоогоо баталгаажуулах
+</button>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- 4-р хуудас -->
+
+<div id="page4" class="page">
+
+<div class="card">
+
+
+<h1>
+💌 Болзоо баталгаажлаа 💗
+</h1>
+
+
+<p id="result"></p>
+
+
+<h2 id="count"></h2>
+
+
+<button onclick="saveInvite()">
+💾 Урилгаа хадгалах
+</button>
+
+
+<button onclick="restart()">
+🔄 Эхнээс нь үзэх
+</button>
+
+
+</div>
+
+</div><script>
+
+function yesClick(){
+
+    for(let i=0;i<80;i++){
+
+        let heart=document.createElement("div");
+
+        heart.className="heart";
+        heart.innerHTML="❤️";
+
+        heart.style.left=Math.random()*100+"vw";
+
+        heart.style.animationDuration=
+        (Math.random()*2+2)+"s";
+
+        document.body.appendChild(heart);
+
+
+        setTimeout(()=>{
+            heart.remove();
+        },3000);
+
+    }
+
+
+    setTimeout(()=>{
+
+        changePage("page1","page2");
+
+    },1500);
+
+}
+
 
 
 function moveNo(){
 
-let no=document.getElementById("no");
+    let no=document.getElementById("no");
 
-no.style.left=Math.random()*80+"%";
-no.style.top=Math.random()*80+"%";
+    no.style.left=Math.random()*80+"vw";
 
-}
-
-
-
-function yesClick(){
-
-for(let i=0;i<80;i++){
-
-let heart=document.createElement("div");
-
-heart.className="heart";
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.animationDuration=
-(Math.random()*2+2)+"s";
-
-
-document.body.appendChild(heart);
-
-
-setTimeout(()=>{
-heart.remove();
-},3000);
-
-}
-
-
-setTimeout(()=>{
-
-document.getElementById("page1").classList.remove("active");
-
-document.getElementById("page2").classList.add("active");
-
-},1500);
-
+    no.style.top=Math.random()*80+"vh";
 
 }
 
 
 
-function nextPage(){
 
-alert("Дараагийн хэсэг удахгүй 💗");
+function goDate(){
+
+    changePage("page2","page3");
+
+}
+
+
+
+
+function confirmDate(){
+
+    let date=document.getElementById("date").value;
+
+    let time=document.getElementById("time").value;
+
+    let activity=document.getElementById("activity").value;
+
+
+    localStorage.setItem("date",date);
+
+    localStorage.setItem("time",time);
+
+    localStorage.setItem("activity",activity);
+
+
+
+    document.getElementById("result").innerHTML=
+
+    "📅 Өдөр: "+date+
+    "<br>⏰ Цаг: "+time+
+    "<br>🌸 Юу хийх: "+activity;
+
+
+
+    changePage("page3","page4");
+
+
+    countDays(date);
+
+}
+
+
+
+
+function countDays(date){
+
+    let today=new Date();
+
+    let target=new Date(date);
+
+
+    let difference=target-today;
+
+
+    let days=Math.ceil(
+    difference/(1000*60*60*24)
+    );
+
+
+    if(days<0){
+        days=0;
+    }
+
+
+    document.getElementById("count").innerHTML=
+
+    "⏳ Болзоонд "+days+" хоног үлдлээ 💗";
+
+}
+
+
+
+
+function saveInvite(){
+
+    alert(
+    "💾 Таны болзооны урилга хадгалагдлаа 💗"
+    );
+
+}
+
+
+
+
+function restart(){
+
+    location.reload();
+
+}
+
+
+
+
+function changePage(oldPage,newPage){
+
+    document.getElementById(oldPage)
+    .classList.remove("active");
+
+
+    document.getElementById(newPage)
+    .classList.add("active");
 
 }
 
@@ -176,4 +396,5 @@ alert("Дараагийн хэсэг удахгүй 💗");
 
 
 </body>
+
 </html>
