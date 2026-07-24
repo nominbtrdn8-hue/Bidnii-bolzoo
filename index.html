@@ -1,1 +1,498 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Our Date 💗</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Pacifico&display=swap');
+
+*{
+ box-sizing:border-box;
+}
+
+body{
+ margin:0;
+ height:100vh;
+ overflow:hidden;
+ background:#fff0f5;
+ font-family:'Quicksand',sans-serif;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ color:#6b3850;
+}
+
+.page{
+ display:none;
+ width:92%;
+ max-width:420px;
+ text-align:center;
+ animation:fade .5s;
+}
+
+.active{
+ display:block;
+}
+
+.card{
+ background:white;
+ padding:25px 20px;
+ border-radius:30px;
+ box-shadow:0 10px 30px rgba(255,150,180,.3);
+}
+
+h1{
+ font-family:'Pacifico',cursive;
+ font-size:34px;
+ color:#e75480;
+ margin-bottom:20px;
+}
+
+p{
+ font-size:17px;
+}
+
+button,
+select{
+ width:85%;
+ padding:13px;
+ margin:8px;
+ border:none;
+ border-radius:25px;
+ font-size:16px;
+ font-family:'Quicksand',sans-serif;
+ cursor:pointer;
+}
+
+button{
+ background:#ff8fab;
+ color:white;
+}
+
+.no{
+ background:#c9c9c9;
+}
+
+select{
+ background:#fff0f5;
+ color:#6b3850;
+}
+
+button:active{
+ transform:scale(.95);
+}
+
+
+.heart{
+ position:fixed;
+ top:-30px;
+ z-index:-1;
+ animation:fall linear infinite;
+ font-size:20px;
+}
+
+@keyframes fall{
+ from{
+  transform:translateY(-30px);
+ }
+ to{
+  transform:translateY(110vh);
+ }
+}
+
+
+@keyframes fade{
+ from{
+ opacity:0;
+ transform:translateY(20px);
+ }
+ to{
+ opacity:1;
+ transform:translateY(0);
+ }
+}
+
+
+.selected{
+ background:#e75480!important;
+ color:white;
+}
+
+.small{
+ font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<script>
+
+setInterval(()=>{
+
+let h=document.createElement("div");
+
+h.className="heart";
+h.innerHTML="💗";
+
+h.style.left=Math.random()*100+"%";
+h.style.animationDuration=(6+Math.random()*5)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.remove();
+},10000);
+
+
+},600);
+
+
+</script>
+
+
+
+<!-- НҮҮР 1 -->
+
+<div class="page active" id="page1">
+
+<div class="card">
+
+<h1>Надтай болзох уу? 💗</h1>
+
+<button onclick="yesClick()">
+Тийм 💖
+</button>
+
+<button class="no" onclick="noClick()" id="noBtn">
+Үгүй 🙈
+</button>
+
+<p id="noText"></p>
+
+</div>
+
+</div>
+
+
+
+<!-- НҮҮР 2 -->
+
+<div class="page" id="page2">
+
+<div class="card">
+
+<h1>Yay! 🥰</h1>
+
+<p>
+Чи зөв сонголт хийлээ 💗
+</p>
+
+<p>
+Одоо бидний болзоог төлөвлөе ✨
+</p>
+
+
+<button onclick="goPage(3)">
+Үргэлжлүүлэх 💕
+</button>
+
+
+</div>
+
+</div>
+
+
+
+
+<!-- НҮҮР 3 -->
+
+<div class="page" id="page3">
+
+<div class="card">
+
+<h1>Хэзээ уулзах вэ? 💕</h1>
+
+
+<p>📅 Өдөр</p>
+
+<select id="date">
+
+<option value="2026-07-26">
+7 сарын 26
+</option>
+
+<option value="2026-07-27">
+7 сарын 27
+</option>
+
+<option value="2026-08-01">
+8 сарын 1
+</option>
+
+</select>
+
+
+<p>⏰ Цаг</p>
+
+<select id="time">
+
+<option>
+14:00
+</option>
+
+<option>
+17:00
+</option>
+
+<option>
+19:00
+</option>
+
+</select>
+
+
+<p>💗 Юу хийх вэ?</p>
+
+
+<button onclick="choose(this)">
+🌿 Ханган явах
+</button>
+
+
+<button onclick="choose(this)">
+🌳 Намсан явах
+</button>
+
+
+<button onclick="choose(this)">
+🍽 Хоол идэх
+</button>
+
+
+<button onclick="choose(this)">
+🦁 Амьтны хүрээлэн явах
+</button>
+
+
+<button onclick="finish()">
+Боллоо 💗
+</button>
+
+
+</div>
+
+</div><!-- НҮҮР 4 -->
+
+<div class="page" id="page4">
+
+<div class="card">
+
+<h1>Бидний болзоо 💗</h1>
+
+<p id="result"></p>
+
+<p id="count"></p>
+
+<h2>
+👗 Хамгийн гоё хувцсаа өмсөөд<br>
+тэр өдөр болзоцгооё 💕
+</h2>
+
+<p class="small">
+Чамтай хамт байх өдрийг хүлээж байна 🥰
+</p>
+
+
+<button onclick="restart()">
+Дахиж үзэх 🔄
+</button>
+
+
+<button onclick="saveDate()">
+Хадгалах 💾
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+let noTexts=[
+"Үгүй 🙈",
+"Гуйж байна 🥺",
+"Хайртай л юм бол Тийм гэж сонго 💗",
+"Жоохон бодоод үз л дээ 🥹"
+];
+
+
+let noIndex=0;
+
+
+function noClick(){
+
+noIndex++;
+
+if(noIndex>=noTexts.length){
+noIndex=0;
+}
+
+document.getElementById("noBtn").innerHTML=noTexts[noIndex];
+
+}
+
+
+
+function yesClick(){
+
+goPage(2);
+
+}
+
+
+
+
+function goPage(num){
+
+document.querySelectorAll(".page")
+.forEach(page=>{
+page.classList.remove("active");
+});
+
+
+document.getElementById("page"+num)
+.classList.add("active");
+
+
+}
+
+
+
+
+let activity="";
+
+
+function choose(btn){
+
+
+activity=btn.innerHTML;
+
+
+document.querySelectorAll("#page3 button")
+.forEach(b=>{
+b.classList.remove("selected");
+});
+
+
+btn.classList.add("selected");
+
+
+}
+
+
+
+
+function finish(){
+
+
+let date=document.getElementById("date").value;
+
+let time=document.getElementById("time").value;
+
+
+if(activity===""){
+activity="Хамтдаа цагийг сайхан өнгөрөөх 💗";
+}
+
+
+
+document.getElementById("result").innerHTML=
+
+"📅 "+date+
+"<br>⏰ "+time+
+"<br>💗 "+activity;
+
+
+
+let today=new Date();
+
+let meet=new Date(date);
+
+
+let days=Math.ceil(
+(meet-today)/(1000*60*60*24)
+);
+
+
+if(days<0){
+days=0;
+}
+
+
+document.getElementById("count").innerHTML=
+
+"✨ Болзоо хүртэл "+days+" өдөр үлдлээ";
+
+
+goPage(4);
+
+
+}
+
+
+
+
+function restart(){
+
+goPage(1);
+
+}
+
+
+
+
+function saveDate(){
+
+
+let saveText=
+
+document.getElementById("result").innerText+
+"\n\n"+
+"Хамгийн гоё хувцсаа өмсөөд тэр өдөр болзоцгооё 💗";
+
+
+let blob=new Blob(
+[saveText],
+{type:"text/plain"}
+);
+
+
+let link=document.createElement("a");
+
+link.href=URL.createObjectURL(blob);
+
+link.download="our-date.txt";
+
+link.click();
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>
